@@ -1,0 +1,60 @@
+// 
+import React, { useState, useEffect } from 'react';
+import './BengaliReviews.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+function BengaliReviews() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('https://run.mocky.io/v3/743f7da9-70d7-4528-833c-6d207fe09a5a');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setData(jsonData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []); // Empty dependency array means this effect runs only once, on component mount
+
+  return (
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="content background1 shadow p-3 mb-5 bg-white rounded row">
+          {data.map((card, index) => (
+            <div className="card col-4 col-md-2" key={index} style={{ margin: '4rem' }}>
+              <div className="card__image-container">
+                <img className="card__image img-fluid" src={card.imageUrl} alt="" />
+              </div>
+              <br />
+              <br />
+              <div className="card__content">
+                <h1 className="card__title">{card.title}</h1>
+                <p className="card-text">{card.content}</p>
+              </div>
+              <button className="btn btn-primary bottom-button">
+              <Link to={`/Reviews/${card.title}`} className='reviewButton'>  
+                  <b>Read Reviews</b>
+                </Link>
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default BengaliReviews;
