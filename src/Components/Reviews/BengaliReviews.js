@@ -32,26 +32,24 @@ function BengaliReviews() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="content background1 shadow p-3 mb-5 bg-white rounded row">
-          {data.map((card, index) => (
-            <div className="card col-4 col-md-2" key={index} style={{ margin: '4rem' }}>
-              <div className="card__image-container">
-                <img className="card__image img-fluid" src={card.imageUrl} alt="" />
-              </div>
-              <br />
-              <br />
-              <div className="card__content">
-                <h1 className="card__title">{card.title}</h1>
-                <p className="card-text">{card.content}</p>
-              </div>
-              <button className="btn btn-primary bottom-button">
-              <Link to={`/Reviews/${card.title}`} className='reviewButton'>  
-                  <b>Read Reviews</b>
-                </Link>
-              </button>
+        <div class="content background1 shadow p-3 mb-5 bg-white rounded row">
+        {data.map((card, index) => (
+          <div className="card col-sm-6 col-md-4 col-lg-3 mb-3 m-4" key={index}>
+            <div className="card__image-container">
+              <img className="card__image img-fluid" src={card.imageUrl} alt="" />
             </div>
-          ))}
-        </div>
+            <div className="card__content">
+              <h1 className="card__title">{card.title}</h1>
+              <p className="card-text">{card.content}</p>
+            </div>
+            <button className="btn btn-primary bottom-button">
+              <Link to={`/Reviews/${card.title}`} className="reviewButton">
+                <b>Read Reviews</b>
+              </Link>
+            </button>
+          </div>
+        ))}
+      </div>      
       )}
     </div>
   );

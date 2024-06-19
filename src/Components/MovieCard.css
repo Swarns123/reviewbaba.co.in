@@ -3,6 +3,20 @@
     text-decoration: none;
 }
 
+.card {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 90%; 
+    max-width: 350px; 
+    height: 70vh;
+    border-radius: 6px;
+    padding: 2rem;
+    color: #aaa;
+    box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.2),
+        0 0 1rem rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
 .background{
     background-image: url('C:\Users\swarn\Downloads\pexels-tima-miroshnichenko-7991436.jpg');
     background-size: cover;
